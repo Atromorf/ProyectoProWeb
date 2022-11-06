@@ -25,8 +25,23 @@ Route::controller(ControladorVista::class)->group(
         Route::get('tienda', 'showTienda')->name('tiend');
         Route::get('nosotros', 'showNosotros')->name('Nosotros');
         Route::get('AdminU', 'showAdminU')->name('adU');
+        Route::get('RegistroU', 'showRegistroU')->name('regU');
+        Route::get('articulos', 'showArticulos')->name('Arti');
+        Route::get('ventas', 'showVentas')->name('Vent');
+        Route::get('proveedores', 'showProveedores')->name('Prov');
+        Route::get('usuarios', 'showUsuarios')->name('Usua');
+        Route::get('VendeU', 'showVendeU')->name('vendeU');
+        Route::get('ventasV', 'showVentasV')->name('VentV');
+        Route::get('articulosV', 'showArticulosV')->name('ArtiV');
+        Route::get('RegistroC', 'showRegistroC')->name('regC');
+        Route::get('RegistroCV', 'showRegistroCV')->name('regCV');
     }
 );
 
 Route::post('guardarComic', [ControladorVista::class, 'procesarComic'])->name('SaveMem');
 Route::post('guardarUsuario', [ControladorVista::class, 'procesarUsuario'])->name('SaveMen');
+Route::post('guardarEmpleado', [ControladorVista::class, 'procesarEmpleado'])->name('SaveMin');
+Route::post('guardarArticulo', [ControladorVista::class, 'procesarArticulo'])->name('SaveMim');
+Route::post('guardarArticuloV', [ControladorVista::class, 'procesarArticuloV'])->name('SavMim');
+
+

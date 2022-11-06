@@ -14,24 +14,15 @@
     <!-- Navbar -->
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-        <a href="AdminU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
+        <a href="VendeU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('Arti')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Arti') }}"><font color="white">Articulos</font></a>
+            <a class="nav-link {{ request()->routeIs('Arti')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('ArtiV') }}"><font color="white">Articulos</font></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('regU')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regU') }}"><font color="white">Registrar Usuario</font></a>
+            <a class="nav-link {{ request()->routeIs('VentV')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('VentV') }}"><font color="white">Ventas</font></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('Vent')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Vent') }}"><font color="white">Ventas</font></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('Prov')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Prov') }}"><font color="white">Proveedores</font></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('Usua')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Usua') }}"><font color="white">Usuarios</font></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('regC')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regC') }}"><font color="white">Registro de Articulos</font></a>
+            <a class="nav-link {{ request()->routeIs('regCV')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regCV') }}"><font color="white">Registro Articulos</font></a>
           </li>
           <li class="nav-item">
             <span class="text-muted"><a href="/welcome"><img src="/IMG/quitar-usuario2.png"></a></span>

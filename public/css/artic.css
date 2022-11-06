@@ -1,0 +1,60 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-image: url(/IMG/boom2.jpg);
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(253, 251, 251);
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    border: 0;
+    text-align: center;
+}
+
+.busc{
+    width: 600px;
+    background: rgb(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.busc input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: rgb(0, 0, 0, 0.5);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+table {  color: rgb(250, 243, 243); 
+    font-family: Helvetica, Arial, sans-serif; 
+    width: 1000px; border-collapse: collapse;
+    margin: 60px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+td, th { border: 10px solid transparent; height: 50px; }
+
+th { background: #2b2a2a; font-weight: bold; }
+
+td { background: #4d4b4b; text-align: center; }
+
+tr:nth-child(even) td { background: #5c5b5b; }  
+
+tr:nth-child(odd) td { background: #4e4d4d; } 
+
+tr td:hover { background: #666; color: #FFF; }
+
+
+
+

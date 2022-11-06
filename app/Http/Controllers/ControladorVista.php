@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\validadorLogin;
 use App\Http\Requests\validadorRegistro;
+use App\Http\Requests\validadorRegistroU;
+use App\Http\Requests\validadorRegistroC;
+use App\Http\Requests\validadorRegistroCV;
 
 class ControladorVista extends Controller
 {
@@ -21,6 +24,21 @@ class ControladorVista extends Controller
     public function procesarUsuario(validadorRegistro $req)
     {
         return redirect()->route('Login')->with('registro', 'Usuario gusrdado');
+    }
+
+    public function procesarEmpleado(validadorRegistroU $req)
+    {
+        return redirect()->route('adU')->with('registroU', 'Empleado gusrdado');
+    }
+
+    public function procesarArticulo(validadorRegistroC $req)
+    {
+        return redirect()->route('adU')->with('registroC', 'Articulo gusrdado');
+    }
+
+    public function procesarArticuloV(validadorRegistroCV $req)
+    {
+        return redirect()->route('vendeU')->with('registroCV', 'Articulo gusrdado');
     }
 
     public function showLogin()
@@ -51,6 +69,56 @@ class ControladorVista extends Controller
     public function showAdminU()
     {
         return view('AdminU');
+    }
+
+    public function showRegistroU()
+    {
+        return view('RegistroU');
+    }
+
+    public function showArticulos()
+    {
+        return view('articulos');
+    }
+
+    public function showVentas()
+    {
+        return view('ventas');
+    }
+
+    public function showProveedores()
+    {
+        return view('proveedores');
+    }
+
+    public function showUsuarios()
+    {
+        return view('usuarios');
+    }
+
+    public function showVendeU()
+    {
+        return view('VendeU');
+    }
+
+    public function showVentasV()
+    {
+        return view('ventasV');
+    }
+
+    public function showArticulosV()
+    {
+        return view('articulosV');
+    }
+
+    public function showRegistroC()
+    {
+        return view('RegistroC');
+    }
+
+    public function showRegistroCV()
+    {
+        return view('RegistroCV');
     }
 
 }

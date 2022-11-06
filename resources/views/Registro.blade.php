@@ -27,7 +27,7 @@
             <form method="POST" action="guardarUsuario">
                 @csrf
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtNombre" value="{{ old('txtUsuario') }}">
+                    <input required class="form-control" type="text" name="txtNombre" value="{{ old('txtNombre') }}">
                     <span>Nombre completo</span>
                     <i></i>
                 </div>

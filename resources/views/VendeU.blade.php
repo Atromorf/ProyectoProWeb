@@ -1,4 +1,4 @@
-@extends('loyout0')
+@extends('loyout3')
 
 @section('contenido')
 <!DOCTYPE html>
@@ -18,16 +18,6 @@
     {!! "<script> Swal.fire(
         'Guardado correctamente!',
         'Usuario Registrado Correctamente!',
-        'success'
-        ) </script>" !!}
-
-@endif
-
-@if (session()->has('registroC'))
-    
-    {!! "<script> Swal.fire(
-        'Guardado correctamente!',
-        'Articulo Registrado Correctamente!',
         'success'
         ) </script>" !!}
 
@@ -293,8 +283,8 @@ Copiar esto
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Juanito Alcachofas</h3>
-                <p class="texto">Administrador de Weirdo Comics</p>
+                <h3 class="titulo">Pancrasio la Fuentes</h3>
+                <p class="texto">Vendedor de Weirdo Comics</p>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
@@ -303,6 +293,7 @@ Copiar esto
                     <li><i class="icono fas fa-building"></i> Cargo</li>
                 </ul>
                 <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion.</li>
                     <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento.</li>
                     <li><i class="icono fas fa-share-alt"></i> Redes sociales.</li>
                 </ul>
