@@ -281,7 +281,7 @@ Copiar esto
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">
+                    <img src="https://img.freepik.com/foto-gratis/guapo-exitoso-hombre-negocios-sonriente_176420-19024.jpg?w=2000" alt="img-avatar">
                     <button type="button" class="boton-avatar">
                         <i class="far fa-image"></i>
                     </button>

@@ -44,7 +44,8 @@
 
       <td>Fedex</td>
 
-      <td><a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+      <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a>
+        <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
   
     </tr>
   
@@ -58,7 +59,8 @@
 
       <td>Fedex</td>
 
-      <td><a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+      <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a>
+        <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
   
     </tr>
   
@@ -72,7 +74,8 @@
 
       <td>Fedex</td>
 
-      <td><a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+      <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a>
+        <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
   
     </tr>
 
@@ -86,7 +89,8 @@
 
       <td>Fedex</td>
 
-      <td><a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+      <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a>
+        <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
     
       </tr>
     
@@ -100,8 +104,8 @@
   
         <td>Fedex</td>
   
-        <td><a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
-    
+        <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a>
+          <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a></td>
       </tr>
   
   </table>
