@@ -23,7 +23,7 @@
 
     <div class="box">
         <div class="form">
-            <h2>Registro de empleado</h2>
+            <h2>Registro de Articulo</h2>
             <form method="POST" action="guardarArticuloV">
                 @csrf
                 <div class="inputBox">
@@ -59,7 +59,7 @@
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtImagen') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtPrecio" value="{{ old('txtPrecio') }}">
+                    <input required class="form-control" type="number" name="txtPrecio" value="{{ old('txtPrecio') }}">
                     <span>Precio del Articulo</span>
                     <i></i>
                 </div>
