@@ -8,6 +8,8 @@ use App\Http\Requests\validadorRegistro;
 use App\Http\Requests\validadorRegistroU;
 use App\Http\Requests\validadorRegistroC;
 use App\Http\Requests\validadorRegistroCV;
+use App\Http\Requests\validadorRegistroP;
+use App\Http\Requests\validadorRegistroA;
 
 class ControladorVista extends Controller
 {
@@ -41,6 +43,31 @@ class ControladorVista extends Controller
         return redirect()->route('vendeU')->with('registroCV', 'Articulo gusrdado');
     }
 
+    public function procesarProveedor(validadorRegistroP $req)
+    {
+        return redirect()->route('adU')->with('registroP', 'Articulo gusrdado');
+    }
+
+    public function procesarArt(validadorRegistroA $req)
+    {
+        return redirect()->route('adU')->with('registroA', 'Articulo gusrdado');
+    }
+
+    public function procesarArtV(validadorRegistroAV $req)
+    {
+        return redirect()->route('vendeU')->with('registroAV', 'Articulo gusrdado');
+    }
+
+    public function showRegistroAV()
+    {
+        return view('RegistroAV');
+    }
+
+    public function showRegistroA()
+    {
+        return view('RegistroA');
+    }
+
     public function showLogin()
     {
         return view('login');
@@ -49,6 +76,11 @@ class ControladorVista extends Controller
     public function showRegistro()
     {
         return view('Registro');
+    }
+
+    public function showRegistroP()
+    {
+        return view('RegistroP');
     }
 
     public function showWelcome()

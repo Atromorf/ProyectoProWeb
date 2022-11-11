@@ -27,6 +27,26 @@
     
     {!! "<script> Swal.fire(
         'Guardado correctamente!',
+        'Comic Registrado Correctamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('registroP'))
+    
+    {!! "<script> Swal.fire(
+        'Guardado correctamente!',
+        'Proveedor Registrado Correctamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('registroA'))
+    
+    {!! "<script> Swal.fire(
+        'Guardado correctamente!',
         'Articulo Registrado Correctamente!',
         'success'
         ) </script>" !!}

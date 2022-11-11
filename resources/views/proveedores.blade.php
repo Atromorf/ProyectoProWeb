@@ -109,5 +109,8 @@
       </tr>
   
   </table>
+    <section class="agregand">
+      <a href="/RegistroP"><button type="button" class="btn btn-light">Agregar</button></a>
+    </section>
 </body>
 @stop

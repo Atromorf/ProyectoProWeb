@@ -23,7 +23,7 @@
 
     <div class="box">
         <div class="form">
-            <h2>Registro de empleado</h2>
+            <h2>Registro de Comic</h2>
             <form method="POST" action="guardarArticuloV">
                 @csrf
                 <div class="inputBox">
@@ -35,20 +35,28 @@
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtComic') }} </p>
                 </div>
                 <div class="inputBox">
+                    <input type="number" required="required" name="txtEdicion" value="{{ old('txtEdicion') }}">
+                    <span>Edicion</span>
+                    <i></i>
+                </div>
+                <div class="errores">
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtEdicion') }} </p>
+                </div>
+                <div class="inputBox">
+                    <input type="text" required="required" name="txtCompañia" value="{{ old('txtCompañia') }}">
+                    <span>Compañia</span>
+                    <i></i>
+                </div>
+                <div class="errores">
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtCompañia') }} </p>
+                </div>
+                <div class="inputBox">
                     <input type="number" required="required" name="txtCantidad" value="{{ old('txtCantidad') }}">
-                    <span>En existencia</span>
+                    <span>Cantidad</span>
                     <i></i>
                 </div>
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtCantidad') }} </p>
-                </div>
-                <div class="inputBox">
-                    <input type="number" required="required" name="txtVendidos" value="{{ old('txtVendidos') }}">
-                    <span>Vendidos</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtVendidos') }} </p>
                 </div>
                 <div class="inputBox">
                     <input required class="form-control" type="text" name="txtImagen" value="{{ old('txtImagen') }}">
@@ -59,12 +67,28 @@
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtImagen') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtPrecio" value="{{ old('txtPrecio') }}">
-                    <span>Precio del Articulo</span>
+                    <input required class="form-control" type="number" name="txtPrecioC" value="{{ old('txtPrecioC') }}">
+                    <span>Precio de Compra</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecio') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioC') }} </p>
+                </div>
+                <div class="inputBox">
+                    <input required class="form-control" type="number" name="txtPrecioV" value="{{ old('txtPrecioV') }}">
+                    <span>Precio de Venta</span>
+                    <i></i>
+                </div>
+                <div class="errores">
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioV') }} </p>
+                </div>
+                <div class="inputBox">
+                    <input required class="form-control" type="date" name="txtFecha" value="{{ old('txtFecha') }}">
+                    <span>Fecha de ingreso</span>
+                    <i></i>
+                </div>
+                <div class="errores">
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtFecha') }} </p>
                 </div>
                 <div class="links">
                     <a href="VendeU">Regresar</a>
@@ -80,3 +104,4 @@
 </body>
 
 </html>
+

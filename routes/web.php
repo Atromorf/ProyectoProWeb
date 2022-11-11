@@ -35,6 +35,9 @@ Route::controller(ControladorVista::class)->group(
         Route::get('articulosV', 'showArticulosV')->name('ArtiV');
         Route::get('RegistroC', 'showRegistroC')->name('regC');
         Route::get('RegistroCV', 'showRegistroCV')->name('regCV');
+        Route::get('RegistroP', 'showRegistroP')->name('regP');
+        Route::get('RegistroA', 'showRegistroA')->name('regA');
+        Route::get('RegistroAV', 'showRegistroAV')->name('regAV');
     }
 );
 
@@ -43,5 +46,9 @@ Route::post('guardarUsuario', [ControladorVista::class, 'procesarUsuario'])->nam
 Route::post('guardarEmpleado', [ControladorVista::class, 'procesarEmpleado'])->name('SaveMin');
 Route::post('guardarArticulo', [ControladorVista::class, 'procesarArticulo'])->name('SaveMim');
 Route::post('guardarArticuloV', [ControladorVista::class, 'procesarArticuloV'])->name('SavMim');
+Route::post('guardarProveedor', [ControladorVista::class, 'procesarProveedor'])->name('SavMimi');
+Route::post('guardarArt', [ControladorVista::class, 'procesarArt'])->name('SavMimin');
+Route::post('guardarArtV', [ControladorVista::class, 'procesarArtV'])->name('SavMimir');
+
 
 

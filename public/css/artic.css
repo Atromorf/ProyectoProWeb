@@ -55,6 +55,19 @@ tr:nth-child(odd) td { background: #4e4d4d; }
 
 tr td:hover { background: #666; color: #FFF; }
 
+.agregand .botons{
+    width: 100%;
+    background: black;
+    padding: 40px;
+    color: aliceblue;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    border: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;    
+    align-content: center;
+}
+
 
 
 

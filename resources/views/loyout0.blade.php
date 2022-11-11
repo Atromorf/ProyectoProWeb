@@ -31,7 +31,10 @@
             <a class="nav-link {{ request()->routeIs('Usua')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Usua') }}"><font color="white">Usuarios</font></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('regC')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regC') }}"><font color="white">Registro de Articulos</font></a>
+            <a class="nav-link {{ request()->routeIs('regC')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regC') }}"><font color="white">Registro de Comics</font></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('regA')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regA') }}"><font color="white">Registro de Articulos</font></a>
           </li>
           <li class="nav-item">
             <span class="text-muted"><a href="/welcome"><img src="/IMG/quitar-usuario2.png"></a></span>
