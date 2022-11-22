@@ -13,11 +13,21 @@
 </head>
 
 <body>
-@if (session()->has('registroU'))
+@if (session()->has('registroCV'))
     
     {!! "<script> Swal.fire(
         'Guardado correctamente!',
-        'Usuario Registrado Correctamente!',
+        'Comic Registrado Correctamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('registroAV'))
+    
+    {!! "<script> Swal.fire(
+        'Guardado correctamente!',
+        'Articulo Registrado Correctamente!',
         'success'
         ) </script>" !!}
 

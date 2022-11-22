@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registro Comics</title>
+    <title>Registro Articulo</title>
     <link href="{{ asset('css/nusu.css') }}" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -11,7 +11,7 @@
 
 <body>
 
-@if (session()->has('registroC'))
+@if (session()->has('registroAV'))
     
     {!! "<script> Swal.fire(
         'Guardado correctamente!',
@@ -23,72 +23,72 @@
 
     <div class="box">
         <div class="form">
-            <h2>Registro de Comics</h2>
-            <form method="POST" action="guardarArticulo">
+            <h2>Registro de Articulo</h2>
+            <form method="POST" action="guardarArtV">
                 @csrf
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtComic" value="{{ old('txtComic') }}">
-                    <span>Nombre del Comic</span>
+                    <input required class="form-control" type="text" name="txtTipo" value="{{ old('txtTipo') }}">
+                    <span>Tipo</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtComic') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtTipo') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input type="number" required="required" name="txtEdicion" value="{{ old('txtEdicion') }}">
-                    <span>Edicion</span>
+                    <input type="text" required="required" name="txtMarca" value="{{ old('txtMarca') }}">
+                    <span>Marca</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtEdicion') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtMarca') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input type="text" required="required" name="txtCompañia" value="{{ old('txtCompañia') }}">
-                    <span>Compañia</span>
+                    <input type="text" required="required" name="txtDescripcion" value="{{ old('txtDescripcion') }}">
+                    <span>Descripcion</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtCompañia') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtDescripcion') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input type="number" required="required" name="txtCantidad" value="{{ old('txtCantidad') }}">
+                    <input type="number" required="required" name="txtCantidadA" value="{{ old('txtCantidadA') }}">
                     <span>Cantidad</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtCantidad') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtCantidadA') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtImagen" value="{{ old('txtImagen') }}">
+                    <input required class="form-control" type="text" name="txtImagenA" value="{{ old('txtImagenA') }}">
                     <span>Imagen del Articulo</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtImagen') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtImagenA') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="number" name="txtPrecioC" value="{{ old('txtPrecioC') }}">
+                    <input required class="form-control" type="number" name="txtPrecioCA" value="{{ old('txtPrecioCA') }}">
                     <span>Precio de Compra</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioC') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioCA') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="number" name="txtPrecioV" value="{{ old('txtPrecioV') }}">
+                    <input required class="form-control" type="number" name="txtPrecioVA" value="{{ old('txtPrecioVA') }}">
                     <span>Precio de Venta</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioV') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioVA') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="date" name="txtFecha" value="{{ old('txtFecha') }}">
+                    <input required class="form-control" type="date" name="txtFechaA" value="{{ old('txtFechaA') }}">
                     <span>Fecha de ingreso</span>
                     <i></i>
                 </div>
                 <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtFecha') }} </p>
+                    <p class="text-danger  fst-italic"> {{ $errors->first('txtFechaA') }} </p>
                 </div>
                 <div class="links">
                     <a href="AdminU">Regresar</a>

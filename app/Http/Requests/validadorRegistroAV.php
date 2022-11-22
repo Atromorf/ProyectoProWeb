@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class validadorRegistroC extends FormRequest
+class validadorRegistroA extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,14 @@ class validadorRegistroC extends FormRequest
     public function rules()
     {
         return [
-            'txtComic' => 'min:5',
-            'txtEdicion' => 'min:5',
-            'txtCompañia' => 'min:5',
+            'txtTipo' => 'min:5',
+            'txtMarca' => 'min:5',
+            'txtDescripcion' => 'min:5',
             'txtCantidad' => 'min:4',
-            'txtImagen' => 'min:4',
-            'txtPrecioC' => 'min:4',
-            'txtPrecioV' => 'min:4',
-            'txtFecha' => 'min:4',
+            'txtImagenA' => 'min:4',
+            'txtPrecioCA' => 'min:4',
+            'txtPrecioVA' => 'min:4',
+            'txtFechaA' => 'min:4',
         ];
     }
 }
