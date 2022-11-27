@@ -27,11 +27,11 @@
 </head>
 <body>
 
-@if (session('confirmacion'))
+@if (session()->has('confirmacion'))
     
     <script> Swal.fire(
         'Todo Correcto!',
-        'Bienvenido {{ session('confirmacion')['usuario'] }} ya puede comprar!',
+        'Bienvenido ya puede comprar!',
         'success'
         ) </script>
 

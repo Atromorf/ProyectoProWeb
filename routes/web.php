@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVista;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', [SessionController::class, 'create'])->name('login.index');
+Route::post('/login', [SessionController::class, 'store'])->name('login.store');
+Route::post('/Registro', [RegisterController::class, 'store'])->name('register.store');
+Route::get('/Registro', [RegisterController::class, 'create'])->name('register.create');
+
 Route::controller(ControladorVista::class)->group(
     function () {
         Route::get('welcome', 'showWelcome')->name('/');
-        Route::get('login', 'showLogin')->name('Login');
-        Route::get('Registro', 'showRegistro')->name('reg');
+        //Route::get('login', 'showLogin')->name('Login');
+        //Route::get('Registro', 'showRegistro')->name('reg');
         Route::get('tienda', 'showTienda')->name('tiend');
         Route::get('nosotros', 'showNosotros')->name('Nosotros');
         Route::get('AdminU', 'showAdminU')->name('adU');

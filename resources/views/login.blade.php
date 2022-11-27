@@ -11,11 +11,11 @@
 
 <body>
 
-@if (session('confirmacion'))
+@if (session()->has('confirmacion'))
     
     <script> Swal.fire(
         'Guardado correctamente!',
-        'Bienvenido {{ session('confirmacion')['usuario'] }} ya puedes comprar!',
+        'Bienvenido ya puedes comprar!',
         'success'
         ) </script>
 
@@ -34,7 +34,7 @@
     <div class="box">
         <div class="form">
             <h2>Login</h2>
-            <form method="POST" action="guardarComic">
+            <form method="POST" action="">
                 @csrf
                 <div class="inputBox">
                     <input required class="form-control" type="text" name="txtUsuario"
@@ -53,8 +53,13 @@
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtContraseña') }} </p>
                 </div>
+                @error('message')
+                <div class="errores">
+                    <p class="text-danger  fst-italic"> {{ $message }} </p>
+                </div>
+                @enderror
                 <div class="links">
-                    <a href="Registro">Registrarse</a>
+                    <a href="/Registro">Registrarse</a>
                     <a href="welcome">Salir</a>
                 </div>
                 <div class="inputBox">
