@@ -28,10 +28,8 @@ class validadorRegistroA extends FormRequest
             'txtMarca' => 'min:5',
             'txtDescripcion' => 'min:5',
             'txtCantidad' => 'min:4',
-            'txtImagenA' => 'min:4',
             'txtPrecioCA' => 'min:4',
             'txtPrecioVA' => 'min:4',
-            'txtFechaA' => 'min:4',
         ];
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link href="{{ asset('css/loyout0.css') }}" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Weirdo comics</title>
@@ -15,30 +16,31 @@
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
         <a href="AdminU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('Arti')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Arti') }}"><font color="white">Articulos</font></a>
-          </li>
-          <li class="nav-item">
+          <span class="text-muted">Bienvenido {{session('usuario')}}</span>
+            <div>
+            <a class="nav-link {{ request()->routeIs('artic.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('artic.index') }}"><font color="white">Articulos</font></a>
+            </div>
+            <div>
             <a class="nav-link {{ request()->routeIs('regU')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regU') }}"><font color="white">Registrar Usuario</font></a>
-          </li>
-          <li class="nav-item">
+            </div>
+            <div>
             <a class="nav-link {{ request()->routeIs('Vent')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Vent') }}"><font color="white">Ventas</font></a>
-          </li>
-          <li class="nav-item">
+            </div>
+            <div>
             <a class="nav-link {{ request()->routeIs('Prov')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Prov') }}"><font color="white">Proveedores</font></a>
-          </li>
-          <li class="nav-item">
+            </div>
+            <div>
             <a class="nav-link {{ request()->routeIs('Usua')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Usua') }}"><font color="white">Usuarios</font></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('regC')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regC') }}"><font color="white">Registro de Comics</font></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('regA')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regA') }}"><font color="white">Registro de Articulos</font></a>
-          </li>
-          <li class="nav-item">
-            <span class="text-muted"><a href="/welcome"><img src="/IMG/quitar-usuario2.png"></a></span>
-          </li>
+            </div>
+            <div>
+            <a class="nav-link {{ request()->routeIs('comics.create')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('comics.create') }}"><font color="white">Registro de Comics</font></a>
+            </div>
+            <div>
+            <a class="nav-link {{ request()->routeIs('articulo.create')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('articulo.create') }}"><font color="white">Registro de Articulos</font></a>
+            </div>
+            <div>
+            <a href="/welcome"><i class="bi bi-box-arrow-in-left"></i></a>
+            </div>
         </div>
       </div>
       <nav class="navbar navbar-dark bg-dark">

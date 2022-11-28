@@ -11,7 +11,7 @@
 
 <body>
 
-@if (session()->has('registroAV'))
+@if (session()->has('registroA'))
     
     {!! "<script> Swal.fire(
         'Guardado correctamente!',
@@ -24,7 +24,7 @@
     <div class="box">
         <div class="form">
             <h2>Registro de Articulo</h2>
-            <form method="POST" action="guardarArtV">
+            <form method="POST" action="{{ route('articulo.store')}}">
                 @csrf
                 <div class="inputBox">
                     <input required class="form-control" type="text" name="txtTipo" value="{{ old('txtTipo') }}">
@@ -59,14 +59,6 @@
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtCantidadA') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtImagenA" value="{{ old('txtImagenA') }}">
-                    <span>Imagen del Articulo</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtImagenA') }} </p>
-                </div>
-                <div class="inputBox">
                     <input required class="form-control" type="number" name="txtPrecioCA" value="{{ old('txtPrecioCA') }}">
                     <span>Precio de Compra</span>
                     <i></i>
@@ -81,14 +73,6 @@
                 </div>
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioVA') }} </p>
-                </div>
-                <div class="inputBox">
-                    <input required class="form-control" type="date" name="txtFechaA" value="{{ old('txtFechaA') }}">
-                    <span>Fecha de ingreso</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtFechaA') }} </p>
                 </div>
                 <div class="links">
                     <a href="AdminU">Regresar</a>
