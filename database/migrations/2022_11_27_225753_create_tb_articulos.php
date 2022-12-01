@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('idUsuario');
-            $table->string('nombre');
-            $table->string('correo');
-            $table->string('usuario');
-            $table->string('contraseña');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+        Schema::create('tb_articulos', function (Blueprint $table) {
+            $table->increments('idArticulo');
+            $table->string('tipo');
+            $table->string('marca');
+            $table->string('descripcion');
+            $table->string('cantidad');
+            $table->string('precioCompra');
+            $table->string('precioVenta');
+            $table->date('fecha');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tb_articulos');
     }
 };

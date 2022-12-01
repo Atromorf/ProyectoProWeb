@@ -24,14 +24,12 @@ class validadorRegistroC extends FormRequest
     public function rules()
     {
         return [
-            'txtComic' => 'min:5',
-            'txtEdicion' => 'min:5',
+            'txtComic' => 'min:2',
+            'txtEdicion' => 'min:2',
             'txtCompañia' => 'min:5',
-            'txtCantidad' => 'min:4',
-            'txtImagen' => 'min:4',
-            'txtPrecioC' => 'min:4',
-            'txtPrecioV' => 'min:4',
-            'txtFecha' => 'min:4',
+            'txtCantidad' => 'min:2',
+            'txtPrecioC' => 'min:2',
+            'txtPrecioV' => 'min:2',
         ];
     }
 }

@@ -24,7 +24,7 @@
     <div class="box">
         <div class="form">
             <h2>Registro</h2>
-            <form method="POST" action="guardarUsuario">
+            <form method="POST" action="">
                 @csrf
                 <div class="inputBox">
                     <input required class="form-control" type="text" name="txtNombre" value="{{ old('txtNombre') }}">

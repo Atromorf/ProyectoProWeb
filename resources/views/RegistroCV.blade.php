@@ -23,8 +23,8 @@
 
     <div class="box">
         <div class="form">
-            <h2>Registro de Comic</h2>
-            <form method="POST" action="guardarArticuloV">
+            <h2>Registro de Comics</h2>
+            <form method="POST" action="{{ route('comicsv.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="inputBox">
                     <input required class="form-control" type="text" name="txtComic" value="{{ old('txtComic') }}">
@@ -59,14 +59,6 @@
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtCantidad') }} </p>
                 </div>
                 <div class="inputBox">
-                    <input required class="form-control" type="text" name="txtImagen" value="{{ old('txtImagen') }}">
-                    <span>Imagen del Articulo</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtImagen') }} </p>
-                </div>
-                <div class="inputBox">
                     <input required class="form-control" type="number" name="txtPrecioC" value="{{ old('txtPrecioC') }}">
                     <span>Precio de Compra</span>
                     <i></i>
@@ -82,16 +74,8 @@
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioV') }} </p>
                 </div>
-                <div class="inputBox">
-                    <input required class="form-control" type="date" name="txtFecha" value="{{ old('txtFecha') }}">
-                    <span>Fecha de ingreso</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtFecha') }} </p>
-                </div>
                 <div class="links">
-                    <a href="VendeU">Regresar</a>
+                    <a href="AdminU">Regresar</a>
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Agregar">
