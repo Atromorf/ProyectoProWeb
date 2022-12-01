@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\validadorRegistroA;
+use App\Http\Requests\validadorRegistroP;
 use DB;
 use Carbon\Carbon;
 
@@ -46,14 +46,13 @@ class ControladorArticulos extends Controller
      */
     public function store(validadorRegistroA $request)
     {
-        $suma= $request->input('txtPrecioCA') + $request->input('txtPrecioCA') * 0.4;
         DB::table('tb_articulos')->insert([
             'tipo' => $request->input('txtTipo'),
             'marca' => $request->input('txtMarca'),
             'descripcion' => $request->input('txtDescripcion'),
             'cantidad' => $request->input('txtCantidadA'),
             'precioCompra' => $request->input('txtPrecioCA'),
-            'precioVenta' => $suma,
+            'precioVenta' => $request->input('txtPrecioVA'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -63,14 +62,13 @@ class ControladorArticulos extends Controller
 
     public function stored(validadorRegistroA $request)
     {
-        $suma= $request->input('txtPrecioCA') + $request->input('txtPrecioCA') * 0.4;
         DB::table('tb_articulos')->insert([
             'tipo' => $request->input('txtTipo'),
             'marca' => $request->input('txtMarca'),
             'descripcion' => $request->input('txtDescripcion'),
             'cantidad' => $request->input('txtCantidadA'),
             'precioCompra' => $request->input('txtPrecioCA'),
-            'precioVenta' => $suma,
+            'precioVenta' => $request->input('txtPrecioVA'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -109,14 +107,13 @@ class ControladorArticulos extends Controller
      */
     public function update(validadorRegistroA $request, $id)
     {
-        $suma= $request->input('txtPrecioCA') + $request->input('txtPrecioCA') * 0.4;
         DB::table('tb_articulos')->where('idArticulo', $id)->update([
             'tipo' => $request->input('txtTipo'),
             'marca' => $request->input('txtMarca'),
             'descripcion' => $request->input('txtDescripcion'),
             'cantidad' => $request->input('txtCantidadA'),
             'precioCompra' => $request->input('txtPrecioCA'),
-            'precioVenta' => $suma,
+            'precioVenta' => $request->input('txtPrecioVA'),
             'updated_at' => Carbon::now(),
         ]);
         return redirect('articulos/comics')->with('actualis', 'Comic actualizado');

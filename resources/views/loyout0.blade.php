@@ -24,7 +24,7 @@
             <a class="nav-link {{ request()->routeIs('regU')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regU') }}"><font color="white">Registrar Usuario</font></a>
             </div>
             <div>
-            <a class="nav-link {{ request()->routeIs('Vent')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Vent') }}"><font color="white">Ventas</font></a>
+            <a class="nav-link {{ request()->routeIs('ventas.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('ventas.index') }}"><font color="white">Ventas</font></a>
             </div>
             <div>
             <a class="nav-link {{ request()->routeIs('Prov')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('Prov') }}"><font color="white">Proveedores</font></a>

@@ -17,8 +17,25 @@ class ControladorComics extends Controller
     public function index()
     {
         $resultCom=DB::table('tb_comics')->get();
+        $resultArt=DB::table('tb_articulos')->get();
 
-        return view('articulos', compact('resultCom'));
+        return view('articulos', compact('resultCom'), compact('resultArt'));
+    }
+
+    public function indi()
+    {
+        $resultCom=DB::table('tb_comics')->get();
+        $resultArt=DB::table('tb_articulos')->get();
+
+        return view('articulosV', compact('resultCom'), compact('resultArt'));
+    }
+
+    public function indiqui()
+    {
+        $resultCom=DB::table('tb_comics')->get();
+        $resultArt=DB::table('tb_articulos')->get();
+
+        return view('ventas', compact('resultCom'), compact('resultArt'));
     }
 
     /**
@@ -27,9 +44,14 @@ class ControladorComics extends Controller
      * @return \Illuminate\Http\Response
      * desplegar la vista formulario
      */
-     public function create()
+    public function create()
     {
         return view('RegistroC');
+    }
+
+    public function created()
+    {
+        return view('RegistroCV');
     }
 
     /**
@@ -41,6 +63,24 @@ class ControladorComics extends Controller
      */
     public function store(validadorRegistroC $request)
     {
+        $suma= $request->input('txtPrecioC') + $request->input('txtPrecioC') * 0.4;
+        DB::table('tb_comics')->insert([
+            'nombre' => $request->input('txtComic'),
+            'edicion' => $request->input('txtEdicion'),
+            'compañia' => $request->input('txtCompañia'),
+            'cantidad' => $request->input('txtCantidad'),
+            'precioCompra' => $request->input('txtPrecioC'),
+            'precioVenta' => $suma,
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('AdminU')->with('registroC', 'Comic guardado');
+    }
+
+    public function storev(validadorRegistroC $request)
+    {
+        $suma= $request->input('txtPrecioC') + $request->input('txtPrecioC') * 0.4;
         DB::table('tb_comics')->insert([
             'nombre' => $request->input('txtComic'),
             'edicion' => $request->input('txtEdicion'),
@@ -52,7 +92,7 @@ class ControladorComics extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        return redirect('AdminU')->with('registroC', 'Comic guardado');
+        return redirect('VendeU')->with('registroCV', 'Comic guardado');
     }
 
     /**
@@ -86,13 +126,14 @@ class ControladorComics extends Controller
      */
     public function update(validadorRegistroC $request, $id)
     {
+        $suma= $request->input('txtPrecioC') + $request->input('txtPrecioC') * 0.4;
         DB::table('tb_comics')->where('idComic', $id)->update([
             'nombre' => $request->input('txtComic'),
             'edicion' => $request->input('txtEdicion'),
             'compañia' => $request->input('txtCompañia'),
             'cantidad' => $request->input('txtCantidad'),
             'precioCompra' => $request->input('txtPrecioC'),
-            'precioVenta' => $request->input('txtPrecioV'),
+            'precioVenta' => $suma,
             'updated_at' => Carbon::now(),
         ]);
         return redirect('articulos/comics')->with('actual', 'Comic actualizado');
@@ -106,6 +147,7 @@ class ControladorComics extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_comics')->where('idComic', $id)->delete();
+        return redirect('articulos/comics')->with('confirma', 'Recuerdo eliminado');
     }
 }

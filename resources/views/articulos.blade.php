@@ -5,6 +5,51 @@
 @include('ModalActualizarC')
 
 @include('ModalEliminarC')
+
+@include('ModalActualizarA')
+
+@include('ModalEliminarA')
+
+@if (session()->has('actual'))
+    
+    {!! "<script> Swal.fire(
+        'Guardado correctamente!',
+        'Tu Comic se actualizo satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('actualis'))
+    
+    {!! "<script> Swal.fire(
+        'Guardado correctamente!',
+        'Tu Articulo se actualizo satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('confirma'))
+    
+    {!! "<script> Swal.fire(
+        'Eliminado correctamente!',
+        'Tu Comic se elimino satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('confima'))
+    
+    {!! "<script> Swal.fire(
+        'Eliminado correctamente!',
+        'Tu Articulo se elimino satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +108,49 @@
   </tr>   
   @endforeach
   </tbody>
+
+
    </table>
+   <table class="tablas">   
+    <tbody>
+        <tr>
+          <td><strong>Tipo</strong></td>
+    
+          <td><strong>Marca</strong></td>
+      
+          <td><strong>Descripcion</strong></td>
+    
+          <td><strong>Cantidad</strong></td>
+    
+          <td><strong>Precio de compra</strong></td>
+    
+          <td><strong>Precio de venta</strong></td>
+    
+          <td><strong>Fecha de ingreso</strong></td>
+    
+          <td><strong>Opciones</strong></td>
+        </tr>
+    <tr>
+    @foreach($resultArt as $vistaso)
+    <td> <a>{{$vistaso->tipo}}</a></td>
+    <td> <a>{{$vistaso->marca}}</a></td>
+    <td> <a>{{$vistaso->descripcion}}</a></td>
+    <td> <a>{{$vistaso->cantidad}}</a></td>
+    <td> <a>{{$vistaso->precioCompra}}</a></td>
+    <td> <a>{{$vistaso->precioVenta}}</a></td>
+    <td> <a>{{$vistaso->fecha}}</a></td>
+    <td> 
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarA{{$vistaso->idArticulo}}">
+        Editar <i class="bi bi-pen"></i>
+      </button>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarA{{$vistaso->idArticulo}}">
+        Eliminar
+      </button>
+    </td>
+    </tr>   
+    @endforeach
+    </tbody>
+     </table>
 </body>
 
 @stop
