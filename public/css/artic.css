@@ -68,6 +68,17 @@ tr td:hover { background: #666; color: #FFF; }
     align-content: center;
 }
 
+.agregand{
+    width: 370px;
+    background: rgb(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
 
 
 

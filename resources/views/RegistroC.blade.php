@@ -67,7 +67,7 @@
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioC') }} </p>
                 </div>
                 <div class="links">
-                    <a href="AdminU">Regresar</a>
+                    <a href="/AdminU">Regresar</a>
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Agregar">

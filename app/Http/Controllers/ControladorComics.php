@@ -38,6 +38,14 @@ class ControladorComics extends Controller
         return view('ventas', compact('resultCom'), compact('resultArt'));
     }
 
+    public function indis()
+    {
+        $resultCom=DB::table('tb_comics')->get();
+        $resultArt=DB::table('tb_articulos')->get();
+
+        return view('ventasV', compact('resultCom'), compact('resultArt'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +95,7 @@ class ControladorComics extends Controller
             'compañia' => $request->input('txtCompañia'),
             'cantidad' => $request->input('txtCantidad'),
             'precioCompra' => $request->input('txtPrecioC'),
-            'precioVenta' => $request->input('txtPrecioV'),
+            'precioVenta' => $suma,
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

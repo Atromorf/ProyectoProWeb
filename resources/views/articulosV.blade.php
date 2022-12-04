@@ -6,6 +6,10 @@
 
 @include('ModalEliminarC')
 
+@include('ModalActualizarA')
+
+@include('ModalEliminarA')
+
 @if (session()->has('actual'))
     
     {!! "<script> Swal.fire(
@@ -116,10 +120,10 @@
     <td> <a>{{$vistaso->precioVenta}}</a></td>
     <td> <a>{{$vistaso->fecha}}</a></td>
     <td> 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarC">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarA{{$vistaso->idArticulo}}">
         Editar <i class="bi bi-pen"></i>
       </button>
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarC">
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarA{{$vistaso->idArticulo}}">
         Eliminar
       </button>
     </td>

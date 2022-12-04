@@ -23,6 +23,16 @@
 
 @endif
 
+@if (session()->has('pedidos'))
+    
+    {!! "<script> Swal.fire(
+        'Enviado correctamente!',
+        'Solicitud enviada al proveedor Correctamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
 @if (session()->has('registroC'))
     
     {!! "<script> Swal.fire(

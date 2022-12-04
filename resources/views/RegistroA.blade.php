@@ -66,16 +66,8 @@
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioCA') }} </p>
                 </div>
-                <div class="inputBox">
-                    <input required class="form-control" type="number" name="txtPrecioVA" value="{{ old('txtPrecioVA') }}">
-                    <span>Precio de Venta</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioVA') }} </p>
-                </div>
                 <div class="links">
-                    <a href="AdminU">Regresar</a>
+                    <a href="/AdminU">Regresar</a>
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Agregar">

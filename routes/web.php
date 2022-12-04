@@ -6,6 +6,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ControladorComics;
 use App\Http\Controllers\ControladorArticulos;
+use App\Http\Controllers\ControladorProveedores;
+use App\Mail\PedidosMailable;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\ControladorPedidos;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +56,17 @@ Route::put('articulos/{id}/update', [ControladorArticulos::class, 'update'])->na
 Route::delete('articulos/{id}/delete', [ControladorArticulos::class, 'destroy'])->name('articulo.destroy');
 //ventas
 Route::get('ventas/comics', [ControladorComics::class, 'indiqui'])->name('ventas.index');
-
+Route::get('ventasV/comics', [ControladorComics::class, 'indis'])->name('ventas.indis');
+//proveedores
+Route::get('proveedores/prov', [ControladorProveedores::class, 'index'])->name('prov.index');
+Route::post('proveedores/strore', [ControladorProveedores::class, 'store'])->name('prov.store');
+//update
+Route::put('proveedores/{id}/update', [ControladorProveedores::class, 'update'])->name('prov.update');
+//delete
+Route::delete('proveedores/{id}/delete', [ControladorProveedores::class, 'destroy'])->name('prov.destroy');
+//email
+Route::get('pedidos', [ControladorPedidos::class, 'index'])->name('pedidos.index');
+Route::post('pedidos/envio', [ControladorPedidos::class, 'store'])->name('pedidos.store');
 
 Route::controller(ControladorVista::class)->group(
     function () {

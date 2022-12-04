@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input class="form-control" type="text" name="txtPrecioVA" value="{{$vistaso->precioVenta}}" placeholder="Precio Venta">
+                    <input readonly class="form-control" type="text" name="txtPrecioVA" value="{{$vistaso->precioVenta}}" placeholder="Precio Venta">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioVA') }} </p>
                 </div>
             

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link href="{{ asset('css/loyout0.css') }}" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Weirdo comics</title>
@@ -14,22 +15,22 @@
     <!-- Navbar -->
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-        <a href="VendeU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
-          <li class="nav-item">
+        <a href="/VendeU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
+          <div>
             <a class="nav-link {{ request()->routeIs('articv.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('articv.index') }}"><font color="white">Articulos</font></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('VentV')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('VentV') }}"><font color="white">Ventas</font></a>
-          </li>
-          <li class="nav-item">
+          </div>
+          <div>
+            <a class="nav-link {{ request()->routeIs('ventas.indis')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('ventas.indis') }}"><font color="white">Ventas</font></a>
+          </div>
+          <div>
             <a class="nav-link {{ request()->routeIs('comicsv.create')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('comicsv.create') }}"><font color="white">Registro de Comic</font></a>
-          </li>
-          <li class="nav-item">
+          </div>
+          <div>
             <a class="nav-link {{ request()->routeIs('regAV')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regAV') }}"><font color="white">Registro de Articulo</font></a>
-          </li>
-          <li class="nav-item">
-            <span class="text-muted"><a href="/welcome"><img src="/IMG/quitar-usuario2.png"></a></span>
-          </li>
+          </div>
+          <div>
+            <a href="/welcome"><i class="bi bi-box-arrow-in-left"></i></a>
+          </div>
         </div>
       </div>
       <nav class="navbar navbar-dark bg-dark">

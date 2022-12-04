@@ -11,7 +11,7 @@
 
 <body>
 
-@if (session()->has('registroCV'))
+@if (session()->has('registroC'))
     
     {!! "<script> Swal.fire(
         'Guardado correctamente!',
@@ -66,16 +66,8 @@
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioC') }} </p>
                 </div>
-                <div class="inputBox">
-                    <input required class="form-control" type="number" name="txtPrecioV" value="{{ old('txtPrecioV') }}">
-                    <span>Precio de Venta</span>
-                    <i></i>
-                </div>
-                <div class="errores">
-                    <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioV') }} </p>
-                </div>
                 <div class="links">
-                    <a href="AdminU">Regresar</a>
+                    <a href="/VendeU">Regresar</a>
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Agregar">
