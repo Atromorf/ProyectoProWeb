@@ -7,18 +7,19 @@ use App\Http\Requests\validadorRegistroP;
 use DB;
 use Carbon\Carbon;
 
-class ControladorArticulos extends Controller
+class ControladorProveedores extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $resultArt=DB::table('tb_articulos')->get();
+        $buscardon=$request->get('buscardon');
+        $resultProv=DB::table('tb_proveedores')->where('empresa','like','%'.$buscardon.'%')->get();
 
-        return view('articulos', compact('resultArt'));
+        return view('proveedores', compact('resultProv'), compact('buscardon'));
     }
 
     /**
@@ -44,36 +45,20 @@ class ControladorArticulos extends Controller
      * @return \Illuminate\Http\Response
      * procesar el recurdo
      */
-    public function store(validadorRegistroA $request)
+    public function store(validadorRegistroP $request)
     {
-        DB::table('tb_articulos')->insert([
-            'tipo' => $request->input('txtTipo'),
-            'marca' => $request->input('txtMarca'),
-            'descripcion' => $request->input('txtDescripcion'),
-            'cantidad' => $request->input('txtCantidadA'),
-            'precioCompra' => $request->input('txtPrecioCA'),
-            'precioVenta' => $request->input('txtPrecioVA'),
+        DB::table('tb_proveedores')->insert([
+            'empresa' => $request->input('txtEmpresa'),
+            'direccion' => $request->input('txtDireccion'),
+            'pais' => $request->input('txtPais'),
+            'num_fijo' => $request->input('txtNumFijo'),
+            'num_celular' => $request->input('txtNumCelular'),
+            'correo' => $request->input('txtCorreo'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        return redirect('AdminU')->with('registroA', 'Comic guardado');
-    }
-
-    public function stored(validadorRegistroA $request)
-    {
-        DB::table('tb_articulos')->insert([
-            'tipo' => $request->input('txtTipo'),
-            'marca' => $request->input('txtMarca'),
-            'descripcion' => $request->input('txtDescripcion'),
-            'cantidad' => $request->input('txtCantidadA'),
-            'precioCompra' => $request->input('txtPrecioCA'),
-            'precioVenta' => $request->input('txtPrecioVA'),
-            'fecha' => Carbon::now(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-        return redirect('VendeU')->with('registroAV', 'Articulo guardado');
+        return redirect('proveedores/prov')->with('prove', 'Proveedor guardado');
     }
 
     /**
@@ -105,18 +90,18 @@ class ControladorArticulos extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(validadorRegistroA $request, $id)
+    public function update(validadorRegistroP $request, $id)
     {
-        DB::table('tb_articulos')->where('idArticulo', $id)->update([
-            'tipo' => $request->input('txtTipo'),
-            'marca' => $request->input('txtMarca'),
-            'descripcion' => $request->input('txtDescripcion'),
-            'cantidad' => $request->input('txtCantidadA'),
-            'precioCompra' => $request->input('txtPrecioCA'),
-            'precioVenta' => $request->input('txtPrecioVA'),
+        DB::table('tb_proveedores')->where('idProveedor', $id)->update([
+            'empresa' => $request->input('txtEmpresa'),
+            'direccion' => $request->input('txtDireccion'),
+            'pais' => $request->input('txtPais'),
+            'num_fijo' => $request->input('txtNumFijo'),
+            'num_celular' => $request->input('txtNumCelular'),
+            'correo' => $request->input('txtCorreo'),
             'updated_at' => Carbon::now(),
         ]);
-        return redirect('articulos/comics')->with('actualis', 'Comic actualizado');
+        return redirect('proveedores/prov')->with('actualis', 'Comic actualizado');
     }
 
     /**
@@ -127,7 +112,7 @@ class ControladorArticulos extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tb_articulos')->where('idArticulo', $id)->delete();
-        return redirect('articulos/comics')->with('confima', 'Recuerdo eliminado');
+        DB::table('tb_proveedores')->where('idProveedor', $id)->delete();
+        return redirect('proveedores/prov')->with('confima', 'Proveedor eliminado');
     }
 }

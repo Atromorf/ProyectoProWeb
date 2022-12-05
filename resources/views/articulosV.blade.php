@@ -6,6 +6,10 @@
 
 @include('ModalEliminarC')
 
+@include('ModalActualizarA')
+
+@include('ModalEliminarA')
+
 @if (session()->has('actual'))
     
     {!! "<script> Swal.fire(
@@ -39,9 +43,9 @@
 <body>
 <h1>Productos Disponibles</h1>
 <section class="busc">
-  <form action="/BuscaC" method="POST">
-      Comic<input type="text" name="txtBusquedaD" /> Articulo <input type="text" name="txtBusquedaDF" />
-      <input type="submit" value="Buscar" />
+  <form class="d-flex">
+    <input name="buscarpor" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </section>
 //
@@ -116,10 +120,10 @@
     <td> <a>{{$vistaso->precioVenta}}</a></td>
     <td> <a>{{$vistaso->fecha}}</a></td>
     <td> 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarC">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarA{{$vistaso->idArticulo}}">
         Editar <i class="bi bi-pen"></i>
       </button>
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarC">
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarA{{$vistaso->idArticulo}}">
         Eliminar
       </button>
     </td>
