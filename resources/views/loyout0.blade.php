@@ -18,7 +18,7 @@
         <a href="/AdminU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
           <span class="text-muted">Bienvenido {{session('usuario')}}</span>
             <div>
-            <a class="nav-link {{ request()->routeIs('artic.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('artic.index') }}"><font color="white">Articulos</font></a>
+            <a class="nav-link {{ request()->routeIs('artic.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('artic.index') }}"><font color="white">Productos</font></a>
             </div>
             <div>
             <a class="nav-link {{ request()->routeIs('regU')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regU') }}"><font color="white">Registrar Usuario</font></a>

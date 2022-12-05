@@ -56,9 +56,9 @@
 <body>
 <h1>Productos Disponibles</h1>
 <section class="busc">
-  <form action="/BuscaC" method="POST">
-      Comic<input type="text" name="txtBusquedaD" /> Articulo <input type="text" name="txtBusquedaDF" />
-      <input type="submit" value="Buscar" />
+  <form class="d-flex">
+    <input name="buscarpor" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </section>
 //

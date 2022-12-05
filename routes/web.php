@@ -11,6 +11,7 @@ use App\Mail\PedidosMailable;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ControladorPedidos;
+use App\Http\Controllers\VentasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,9 @@ Route::delete('articulos/{id}/delete', [ControladorArticulos::class, 'destroy'])
 //ventas
 Route::get('ventas/comics', [ControladorComics::class, 'indiqui'])->name('ventas.index');
 Route::get('ventasV/comics', [ControladorComics::class, 'indis'])->name('ventas.indis');
+//pdf
+Route::get('pedidos/pdf', [VentasController::class, 'index'])->name('pedidos.pdf');
+Route::get('download-pdf', [VentasController::class, 'downloadPDF'])->name('download.pdf');
 //proveedores
 Route::get('proveedores/prov', [ControladorProveedores::class, 'index'])->name('prov.index');
 Route::post('proveedores/strore', [ControladorProveedores::class, 'store'])->name('prov.store');
@@ -67,6 +71,7 @@ Route::delete('proveedores/{id}/delete', [ControladorProveedores::class, 'destro
 //email
 Route::get('pedidos', [ControladorPedidos::class, 'index'])->name('pedidos.index');
 Route::post('pedidos/envio', [ControladorPedidos::class, 'store'])->name('pedidos.store');
+
 
 Route::controller(ControladorVista::class)->group(
     function () {

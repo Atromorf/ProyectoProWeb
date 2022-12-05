@@ -14,36 +14,52 @@ class ControladorComics extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $resultCom=DB::table('tb_comics')->get();
-        $resultArt=DB::table('tb_articulos')->get();
-
-        return view('articulos', compact('resultCom'), compact('resultArt'));
+        $buscarpor=$request->get('buscarpor');
+        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
+        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
+        if ($resultCom->count()>0) {
+            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
+        }else{
+            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
+        }
     }
 
-    public function indi()
+    public function indi(Request $request)
     {
-        $resultCom=DB::table('tb_comics')->get();
-        $resultArt=DB::table('tb_articulos')->get();
-
-        return view('articulosV', compact('resultCom'), compact('resultArt'));
+        $buscarpor=$request->get('buscarpor');
+        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
+        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
+        if ($resultCom->count()>0) {
+            return view('articulosV',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
+        }else{
+            return view('articulosV',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
+        }
     }
 
-    public function indiqui()
+    public function indiqui(Request $request)
     {
-        $resultCom=DB::table('tb_comics')->get();
-        $resultArt=DB::table('tb_articulos')->get();
-
-        return view('ventas', compact('resultCom'), compact('resultArt'));
+        $buscardon=$request->get('buscardon');
+        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscardon.'%')->get();
+        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscardon%")->get();
+        if ($resultCom->count()>0) {
+            return view('ventas',compact('resultCom'), compact('resultArt'), compact('buscardon'))->with('busca','No se ha encontrado el articulo');
+        }else{
+            return view('ventas',compact('resultCom'), compact('resultArt'), compact('buscardon'));
+        }
     }
 
-    public function indis()
+    public function indis(Request $request)
     {
-        $resultCom=DB::table('tb_comics')->get();
-        $resultArt=DB::table('tb_articulos')->get();
-
-        return view('ventasV', compact('resultCom'), compact('resultArt'));
+        $buscarpor=$request->get('buscarpor');
+        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
+        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
+        if ($resultCom->count()>0) {
+            return view('ventasV',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
+        }else{
+            return view('ventasV',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
+        }
     }
 
     /**

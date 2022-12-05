@@ -2,14 +2,6 @@
 
 @section('contenido')
 
-@include('ModalActualizarC')
-
-@include('ModalEliminarC')
-
-@include('ModalActualizarA')
-
-@include('ModalEliminarA')
-
 @if (session()->has('actual'))
     
     {!! "<script> Swal.fire(
@@ -63,9 +55,9 @@
 <body>
 <h1>Productos Disponibles</h1>
 <section class="busc">
-  <form action="/BuscaC" method="POST">
-      Comic<input type="text" name="txtBusquedaD" /> Articulo <input type="text" name="txtBusquedaDF" />
-      <input type="submit" value="Buscar" />
+  <form class="d-flex">
+    <input name="buscardon" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </section>
 //
@@ -98,9 +90,7 @@
   <td> <a>{{$vista->precioVenta}}</a></td>
   <td> <a>{{$vista->fecha}}</a></td>
   <td> 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarC{{$vista->idComic}}">
-      Vender <i class="bi bi-pen"></i>
-    </button>
+    <a href="" class="btn btn-success btn-sm">Export to PDF</a>
   </td>
   </tr>   
   @endforeach

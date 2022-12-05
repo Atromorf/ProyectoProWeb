@@ -14,11 +14,12 @@ class ControladorProveedores extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $resultProv=DB::table('tb_proveedores')->get();
+        $buscardon=$request->get('buscardon');
+        $resultProv=DB::table('tb_proveedores')->where('empresa','like','%'.$buscardon.'%')->get();
 
-        return view('proveedores', compact('resultProv'));
+        return view('proveedores', compact('resultProv'), compact('buscardon'));
     }
 
     /**
