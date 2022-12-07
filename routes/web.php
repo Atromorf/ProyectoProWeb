@@ -58,6 +58,9 @@ Route::delete('articulos/{id}/delete', [ControladorArticulos::class, 'destroy'])
 //ventas
 Route::get('ventas/comics', [ControladorComics::class, 'indiqui'])->name('ventas.index');
 Route::get('ventasV/comics', [ControladorComics::class, 'indis'])->name('ventas.indis');
+Route::get('carrito/{id}/ventas', [ControladorComics::class, 'cart'])->name('ventas.cart');
+Route::get('carrito/{id}/ventasA', [ControladorComics::class, 'cartun'])->name('ventas.cartun');
+Route::delete('carrito/{id}/delete', [ControladorComics::class, 'romper'])->name('venta.romper');
 //pdf
 Route::get('pedidos/pdf', [VentasController::class, 'index'])->name('pedidos.pdf');
 Route::get('download-pdf', [VentasController::class, 'downloadPDF'])->name('download.pdf');
@@ -71,6 +74,8 @@ Route::delete('proveedores/{id}/delete', [ControladorProveedores::class, 'destro
 //email
 Route::get('pedidos', [ControladorPedidos::class, 'index'])->name('pedidos.index');
 Route::post('pedidos/envio', [ControladorPedidos::class, 'store'])->name('pedidos.store');
+//ticket
+Route::get('ticket/pdf', [ControladorComics::class, 'PDF'])->name('ticket.PDF');
 
 
 Route::controller(ControladorVista::class)->group(

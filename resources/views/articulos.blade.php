@@ -60,6 +60,26 @@
 
 @endif
 
+@if (session()->has('cart'))
+    
+    {!! "<script> Swal.fire(
+        'Agregado al carrito!',
+        'Tu comic esta en el carrito!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('cartun'))
+    
+    {!! "<script> Swal.fire(
+        'Agregado al carrito!',
+        'Tu articulo esta en el carrito!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,6 +135,9 @@
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarC{{$vista->idComic}}">
       Eliminar
     </button>
+    <form action="{{route('ventas.cart', $vista->idComic)}}">
+    <button type="submit" class="btn btn-warning"><i class="bi bi-cart"></i></a></button>
+    </form>
   </td>
   </tr>   
   @endforeach
@@ -157,6 +180,9 @@
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarA{{$vistaso->idArticulo}}">
         Eliminar
       </button>
+      <form action="{{route('ventas.cartun', $vistaso->idArticulo)}}">
+        <button type="submit" class="btn btn-warning"><i class="bi bi-cart"></i></a></button>
+        </form>
     </td>
     </tr>   
     @endforeach

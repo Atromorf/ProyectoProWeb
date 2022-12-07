@@ -2,6 +2,8 @@
 
 @section('contenido')
 
+@include('ModalEliminarV')
+
 @if (session()->has('actual'))
     
     {!! "<script> Swal.fire(
@@ -42,6 +44,16 @@
 
 @endif
 
+@if (session()->has('confina'))
+    
+    {!! "<script> Swal.fire(
+        'Eliminado correctamente!',
+        'Tu producto se elimino del carrito!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +65,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-<h1>Productos Disponibles</h1>
+<h1>Articulos en carrito</h1>
 <section class="busc">
   <form class="d-flex">
     <input name="buscardon" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -64,77 +76,29 @@
 <table class="tablas">   
   <tbody>
       <tr>
-        <td><strong>Nombre</strong></td>
-  
-        <td><strong>Edicion</strong></td>
-    
-        <td><strong>Compañia</strong></td>
-  
-        <td><strong>Cantidad</strong></td>
-  
-        <td><strong>Precio de compra</strong></td>
-  
-        <td><strong>Precio de venta</strong></td>
-  
-        <td><strong>Fecha de ingreso</strong></td>
-  
-        <td><strong>Opciones</strong></td>
+        <th colspan="4" scope="rowgroup"><strong>Productos agregados</strong></th>
       </tr>
   <tr>
-  @foreach($resultCom as $vista)
+  @foreach($ventas as $vista)
   <td> <a>{{$vista->nombre}}</a></td>
-  <td> <a>{{$vista->edicion}}</a></td>
-  <td> <a>{{$vista->compañia}}</a></td>
-  <td> <a>{{$vista->cantidad}}</a></td>
-  <td> <a>{{$vista->precioCompra}}</a></td>
-  <td> <a>{{$vista->precioVenta}}</a></td>
-  <td> <a>{{$vista->fecha}}</a></td>
+  <td> <a>{{$vista->tipo}}</a></td>
+  <td> <a>{{$vista->precio}}</a></td>
   <td> 
-    <a href="" class="btn btn-success btn-sm">Export to PDF</a>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarV{{$vista->idVentas}}">
+      Eliminar
+    </button>
   </td>
   </tr>   
   @endforeach
   </tbody>
+</table>
 
+<section class="agregand">
+  <form action="{{route('ticket.PDF')}}">
+    <button type="submit" class="btn btn-warning">Generar PDF <i class="bi bi-filetype-pdf"></i></a></button>
+    </form>
+ </section>
 
-   </table>
-   <table class="tablas">   
-    <tbody>
-        <tr>
-          <td><strong>Tipo</strong></td>
-    
-          <td><strong>Marca</strong></td>
-      
-          <td><strong>Descripcion</strong></td>
-    
-          <td><strong>Cantidad</strong></td>
-    
-          <td><strong>Precio de compra</strong></td>
-    
-          <td><strong>Precio de venta</strong></td>
-    
-          <td><strong>Fecha de ingreso</strong></td>
-    
-          <td><strong>Opciones</strong></td>
-        </tr>
-    <tr>
-    @foreach($resultArt as $vistaso)
-    <td> <a>{{$vistaso->tipo}}</a></td>
-    <td> <a>{{$vistaso->marca}}</a></td>
-    <td> <a>{{$vistaso->descripcion}}</a></td>
-    <td> <a>{{$vistaso->cantidad}}</a></td>
-    <td> <a>{{$vistaso->precioCompra}}</a></td>
-    <td> <a>{{$vistaso->precioVenta}}</a></td>
-    <td> <a>{{$vistaso->fecha}}</a></td>
-    <td> 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarA{{$vistaso->idArticulo}}">
-        Vender <i class="bi bi-pen"></i>
-      </button>
-    </td>
-    </tr>   
-    @endforeach
-    </tbody>
-     </table>
 </body>
 
 @stop

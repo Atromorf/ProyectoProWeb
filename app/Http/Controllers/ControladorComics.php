@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\validadorRegistroC;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class ControladorComics extends Controller
 {
@@ -19,11 +21,38 @@ class ControladorComics extends Controller
         $buscarpor=$request->get('buscarpor');
         $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
         $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
-        if ($resultCom->count()>0) {
-            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
-        }else{
+        if(is_null($resultCom) && is_null($resultArt))
+        {
+            return redirect('articulos/comics',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
+        } else {
             return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
         }
+    }
+
+    public function cart($id)
+    {
+        $resultCom=DB::table('tb_comics')->where('idComic',$id)->get();
+        DB::table('tb_ventas')->insert([
+            'nombre' => $resultCom[0]->nombre,
+            'tipo' => $resultCom[0]->edicion,
+            'precio' => $resultCom[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('articulos/comics')->with('cart', 'Comic guardado');
+    }
+
+    public function cartun($id)
+    {
+        $resultArt=DB::table('tb_articulos')->where('idArticulo',$id)->get();
+        DB::table('tb_ventas')->insert([
+            'nombre' => $resultArt[0]->tipo,
+            'tipo' => $resultArt[0]->marca,
+            'precio' => $resultArt[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('articulos/comics')->with('cartun', 'Articulo guardado');
     }
 
     public function indi(Request $request)
@@ -40,14 +69,8 @@ class ControladorComics extends Controller
 
     public function indiqui(Request $request)
     {
-        $buscardon=$request->get('buscardon');
-        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscardon.'%')->get();
-        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscardon%")->get();
-        if ($resultCom->count()>0) {
-            return view('ventas',compact('resultCom'), compact('resultArt'), compact('buscardon'))->with('busca','No se ha encontrado el articulo');
-        }else{
-            return view('ventas',compact('resultCom'), compact('resultArt'), compact('buscardon'));
-        }
+        $ventas=DB::table('tb_ventas')->get();
+        return view('ventas',compact('ventas'));
     }
 
     public function indis(Request $request)
@@ -61,6 +84,8 @@ class ControladorComics extends Controller
             return view('ventasV',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
         }
     }
+
+    //agregar articulos al carrito
 
     /**
      * Show the form for creating a new resource.
@@ -76,6 +101,19 @@ class ControladorComics extends Controller
     public function created()
     {
         return view('RegistroCV');
+    }
+
+    public function ticket()
+    {
+        return view('ticket');
+    }
+
+    public function PDF()
+    {
+        $ventas=DB::table('tb_ventas')->get();
+        $pdf =PDF::loadView('ticket', compact("ventas"));
+        return $pdf->stream('Ticket.pdf');
+
     }
 
     /**
@@ -173,5 +211,11 @@ class ControladorComics extends Controller
     {
         DB::table('tb_comics')->where('idComic', $id)->delete();
         return redirect('articulos/comics')->with('confirma', 'Recuerdo eliminado');
+    }
+
+    public function romper($id)
+    {
+        DB::table('tb_ventas')->where('idVentas', $id)->delete();
+        return redirect('ventas/comics')->with('confina', 'Producto eliminado');
     }
 }
