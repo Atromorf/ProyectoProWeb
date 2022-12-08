@@ -61,6 +61,8 @@
                 <div class="links">
                     <a href="/Registro">Registrarse</a>
                     <a href="welcome">Salir</a>
+                    <a href="/AdminU">Administrador</a>
+                    <a href="VendeU">Vendedor</a>
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Ingresar">

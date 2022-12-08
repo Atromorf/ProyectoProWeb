@@ -21,7 +21,7 @@
             <a class="nav-link {{ request()->routeIs('artic.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('artic.index') }}"><font color="white">Productos</font></a>
             </div>
             <div>
-            <a class="nav-link {{ request()->routeIs('regU')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regU') }}"><font color="white">Registrar Usuario</font></a>
+            <a class="nav-link {{ request()->routeIs('reporte.report')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('reporte.report') }}"><font color="white">Reportes de ventas</font></a>
             </div>
             <div>
             <a class="nav-link {{ request()->routeIs('ventas.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('ventas.index') }}"><font color="white">Ventas</font></a>

@@ -311,11 +311,12 @@ Copiar esto
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="https://img.freepik.com/foto-gratis/guapo-exitoso-hombre-negocios-sonriente_176420-19024.jpg?w=2000" alt="img-avatar">
+                    <img src="https://img.freepik.com/foto-gratis/guapo-exitoso-hombre-negocios-sonriente_176420-19024.jpg?w=2000" alt="img-avatar" height="170">
                     <button type="button" class="boton-avatar">
                         <i class="far fa-image"></i>
                     </button>
                 </div>
+                <img src="https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-three-dimensional-financial-management-financial-poster-background-material-image_126689.jpg" alt="img-portada" height="273" width="1300">
                 <button type="button" class="boton-portada">
                     <i class="far fa-image"></i> Cambiar fondo
                 </button>

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_articulos', function (Blueprint $table) {
-            $table->increments('idArticulo');
-            $table->string('tipo');
-            $table->string('marca');
-            $table->string('descripcion');
-            $table->string('cantidad');
-            $table->string('precioCompra');
+        Schema::create('tb_carrito', function (Blueprint $table) {
+            $table->increments('idCarrito');
+            $table->string('producto');
             $table->string('precioVenta');
             $table->string('proveedor');
             $table->date('fecha');
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_articulos');
+        Schema::dropIfExists('tb_carrito');
     }
 };

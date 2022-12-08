@@ -17,7 +17,7 @@
         <div class="bg-dark p-4">
         <a href="/VendeU"><h5 class="text-white h4"><font color="yellow">Weirdo Comics</font></h5></a>
           <div>
-            <a class="nav-link {{ request()->routeIs('articv.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('articv.index') }}"><font color="white">Articulos</font></a>
+            <a class="nav-link {{ request()->routeIs('articv.index')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('articv.index') }}"><font color="white">Productos</font></a>
           </div>
           <div>
             <a class="nav-link {{ request()->routeIs('ventas.indis')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('ventas.indis') }}"><font color="white">Ventas</font></a>
@@ -26,7 +26,7 @@
             <a class="nav-link {{ request()->routeIs('comicsv.create')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('comicsv.create') }}"><font color="white">Registro de Comic</font></a>
           </div>
           <div>
-            <a class="nav-link {{ request()->routeIs('regAV')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('regAV') }}"><font color="white">Registro de Articulo</font></a>
+            <a class="nav-link {{ request()->routeIs('articulov.create')?'text-danger fw-bold':'' }}" aria-current="page" href="{{ route('articulov.create') }}"><font color="white">Registro de Articulo</font></a>
           </div>
           <div>
             <a href="/welcome"><i class="bi bi-box-arrow-in-left"></i></a>

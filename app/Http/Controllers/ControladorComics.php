@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\validadorRegistroC;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class ControladorComics extends Controller
 {
@@ -17,50 +19,137 @@ class ControladorComics extends Controller
     public function index(Request $request)
     {
         $buscarpor=$request->get('buscarpor');
+        $proveedores=DB::table('tb_proveedores')->get();
         $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
         $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
-        if ($resultCom->count()>0) {
-            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
-        }else{
-            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
+        if(is_null($resultCom) && is_null($resultArt))
+        {
+            return redirect('articulos/comics',compact('resultCom'), compact('resultArt'), compact('buscarpor'), compact('proveedores'))->with('busca','No se ha encontrado el articulo');
+        } else {
+            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'), compact('proveedores'));
         }
+    }
+
+    public function cart($id)
+    {
+        $resultCom=DB::table('tb_comics')->where('idComic',$id)->get();
+        DB::table('tb_ventas')->insert([
+            'nombre' => $resultCom[0]->nombre,
+            'tipo' => $resultCom[0]->edicion,
+            'precio' => $resultCom[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('tb_carrito')->insert([
+            'producto' => $resultCom[0]->nombre,
+            'precioVenta' => $resultCom[0]->precioVenta,
+            'proveedor' => $resultCom[0]->proveedor,
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('articulos/comics')->with('cart', 'Comic guardado');
+    }
+
+    public function cartun($id)
+    {
+        $resultArt=DB::table('tb_articulos')->where('idArticulo',$id)->get();
+        DB::table('tb_ventas')->insert([
+            'nombre' => $resultArt[0]->tipo,
+            'tipo' => $resultArt[0]->marca,
+            'precio' => $resultArt[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('tb_carrito')->insert([
+            'producto' => $resultArt[0]->tipo,
+            'precioVenta' => $resultArt[0]->precioVenta,
+            'proveedor' => $resultArt[0]->proveedor,
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('articulos/comics')->with('cartun', 'Articulo guardado');
+    }
+
+    public function carri($id)
+    {
+        $resultCom=DB::table('tb_comics')->where('idComic',$id)->get();
+        DB::table('tb_ventas')->insert([
+            'nombre' => $resultCom[0]->nombre,
+            'tipo' => $resultCom[0]->edicion,
+            'precio' => $resultCom[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('tb_carrito')->insert([
+            'producto' => $resultCom[0]->nombre,
+            'precioVenta' => $resultCom[0]->precioVenta,
+            'proveedor' => $resultCom[0]->proveedor,
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('articulosv/comicsv')->with('cart', 'Comic guardado');
+    }
+
+    public function carrito($id)
+    {
+        $resultArt=DB::table('tb_articulos')->where('idArticulo',$id)->get();
+        DB::table('tb_ventas')->insert([
+            'nombre' => $resultArt[0]->tipo,
+            'tipo' => $resultArt[0]->marca,
+            'precio' => $resultArt[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('tb_carrito')->insert([
+            'producto' => $resultArt[0]->tipo,
+            'precioVenta' => $resultArt[0]->precioVenta,
+            'proveedor' => $resultArt[0]->proveedor,
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect('articulosv/comicsv')->with('cartun', 'Articulo guardado');
     }
 
     public function indi(Request $request)
     {
         $buscarpor=$request->get('buscarpor');
+        $proveedores=DB::table('tb_proveedores')->get();
         $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
         $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
-        if ($resultCom->count()>0) {
-            return view('articulosV',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
-        }else{
-            return view('articulosV',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
+        if(is_null($resultCom) && is_null($resultArt))
+        {
+            return redirect('articulosv/comicsv',compact('resultCom'), compact('resultArt'), compact('buscarpor'), compact('proveedores'))->with('busca','No se ha encontrado el articulo');
+        } else {
+            return view('articulosV',compact('resultCom'), compact('resultArt'), compact('buscarpor'), compact('proveedores'));
         }
     }
 
     public function indiqui(Request $request)
     {
-        $buscardon=$request->get('buscardon');
-        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscardon.'%')->get();
-        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscardon%")->get();
-        if ($resultCom->count()>0) {
-            return view('ventas',compact('resultCom'), compact('resultArt'), compact('buscardon'))->with('busca','No se ha encontrado el articulo');
-        }else{
-            return view('ventas',compact('resultCom'), compact('resultArt'), compact('buscardon'));
-        }
+        $buscason=$request->get('buscason');
+        $ventas=DB::table('tb_ventas')->where('nombre','like','%'.$buscason.'%')->get();
+        return view('ventas',compact('ventas'), compact('buscason'));
+    }
+
+    public function report(Request $request)
+    {
+        $buscarcuan=$request->get('buscarcuan');
+        $reportVent=DB::table('tb_carrito')->where('fecha','like','%'.$buscarcuan.'%')->get();
+        return view('reporte',compact('reportVent'), compact('buscarcuan'));
     }
 
     public function indis(Request $request)
     {
         $buscarpor=$request->get('buscarpor');
-        $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
-        $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
-        if ($resultCom->count()>0) {
-            return view('ventasV',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
-        }else{
-            return view('ventasV',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
-        }
+        $ventas=DB::table('tb_ventas')->where('nombre','like','%'.$buscarpor.'%')->get();
+        return view('ventasV', compact('buscarpor'), compact('ventas'));
     }
+
+    //agregar articulos al carrito
 
     /**
      * Show the form for creating a new resource.
@@ -70,12 +159,40 @@ class ControladorComics extends Controller
      */
     public function create()
     {
-        return view('RegistroC');
+        $proveedores=DB::table('tb_proveedores')->get();
+        return view('RegistroC', compact('proveedores'));
     }
 
     public function created()
     {
-        return view('RegistroCV');
+        $proveedores=DB::table('tb_proveedores')->get();
+        return view('RegistroCV', compact('proveedores'));
+    }
+
+    public function ticket()
+    {
+        return view('ticket');
+    }
+
+    public function PDF()
+    {
+        $ventas=DB::table('tb_ventas')->get();
+        $pdf =PDF::loadView('ticket', compact("ventas"));
+        return $pdf->stream('Ticket.pdf');
+
+    }
+
+    public function reporteV()
+    {
+        return view('reportPDF');
+    }
+
+    public function PDFR()
+    {
+        $reporteVent=DB::table('tb_carrito')->get();
+        $pdf =PDF::loadView('reportPDF', compact("reporteVent"));
+        return $pdf->stream('Reporte.pdf');
+
     }
 
     /**
@@ -95,6 +212,7 @@ class ControladorComics extends Controller
             'cantidad' => $request->input('txtCantidad'),
             'precioCompra' => $request->input('txtPrecioC'),
             'precioVenta' => $suma,
+            'proveedor' => $request->input('txtProveedor'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -112,6 +230,7 @@ class ControladorComics extends Controller
             'cantidad' => $request->input('txtCantidad'),
             'precioCompra' => $request->input('txtPrecioC'),
             'precioVenta' => $suma,
+            'proveedor' => $request->input('txtProveedor'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -173,5 +292,17 @@ class ControladorComics extends Controller
     {
         DB::table('tb_comics')->where('idComic', $id)->delete();
         return redirect('articulos/comics')->with('confirma', 'Recuerdo eliminado');
+    }
+
+    public function romper($id)
+    {
+        DB::table('tb_ventas')->where('idVentas', $id)->delete();
+        return redirect('ventas/comics')->with('confina', 'Producto eliminado');
+    }
+
+    public function destruir($id)
+    {
+        DB::table('tb_carrito')->where('idCarrito', $id)->delete();
+        return redirect('reporte/ventas')->with('elimi', 'Producto eliminado');
     }
 }

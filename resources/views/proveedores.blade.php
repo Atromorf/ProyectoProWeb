@@ -51,7 +51,7 @@
 <h1>Proveedores Disponibles</h1>
 <section class="busc">
   <form class="d-flex">
-    <input name="buscardon" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <input name="buscarpro" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </section>
@@ -86,10 +86,10 @@
   <td> <a>{{$prov->fecha}}</a></td>
   <td> 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActualizarP{{$prov->idProveedor}}">
-      <i class="bi bi-pen"></i>
+      Actualizar<i class="bi bi-pen"></i>
     </button>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarP{{$prov->idProveedor}}">
-      <i class="bi bi-backspace"></i>
+      Eliminar<i class="bi bi-backspace"></i>
     </button>
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalEliminarC">
       <a href="{{ route('pedidos.index') }}"><i class="bi bi-envelope"></i></a>

@@ -58,6 +58,9 @@ Route::delete('articulos/{id}/delete', [ControladorArticulos::class, 'destroy'])
 //ventas
 Route::get('ventas/comics', [ControladorComics::class, 'indiqui'])->name('ventas.index');
 Route::get('ventasV/comics', [ControladorComics::class, 'indis'])->name('ventas.indis');
+Route::get('carrito/{id}/ventas', [ControladorComics::class, 'cart'])->name('ventas.cart');
+Route::get('carrito/{id}/ventasA', [ControladorComics::class, 'cartun'])->name('ventas.cartun');
+Route::delete('carrito/{id}/delete', [ControladorComics::class, 'romper'])->name('venta.romper');
 //pdf
 Route::get('pedidos/pdf', [VentasController::class, 'index'])->name('pedidos.pdf');
 Route::get('download-pdf', [VentasController::class, 'downloadPDF'])->name('download.pdf');
@@ -71,6 +74,17 @@ Route::delete('proveedores/{id}/delete', [ControladorProveedores::class, 'destro
 //email
 Route::get('pedidos', [ControladorPedidos::class, 'index'])->name('pedidos.index');
 Route::post('pedidos/envio', [ControladorPedidos::class, 'store'])->name('pedidos.store');
+Route::get('pedidos/pdf', [ControladorPedidos::class, 'PDF'])->name('pedidos.PDF');
+//ticket
+Route::get('ticket/pdf', [ControladorComics::class, 'PDF'])->name('ticket.PDF');
+//reporte ventas
+Route::get('reporte/ventas', [ControladorComics::class, 'report'])->name('reporte.report');
+Route::get('reporte/pdf', [ControladorComics::class, 'PDFR'])->name('reporte.PDF');
+Route::delete('reporte/{id}/delete', [ControladorComics::class, 'destruir'])->name('reporte.destruir');
+Route::get('carrito/{id}/ventasV', [ControladorComics::class, 'carri'])->name('ventasV.carri');
+Route::get('carrito/{id}/ventasAV', [ControladorComics::class, 'carrito'])->name('ventasV.carrito');
+
+
 
 
 Route::controller(ControladorVista::class)->group(
@@ -81,7 +95,7 @@ Route::controller(ControladorVista::class)->group(
         Route::get('tienda', 'showTienda')->name('tiend');
         Route::get('nosotros', 'showNosotros')->name('Nosotros');
         Route::get('AdminU', 'showAdminU')->name('adU');
-        Route::get('RegistroU', 'showRegistroU')->name('regU');
+        //Route::get('RegistroU', 'showRegistroU')->name('regU');
         //Route::get('articulos', 'showArticulos')->name('Arti');
         //Route::get('ventas', 'showVentas')->name('Vent');
         Route::get('proveedores', 'showProveedores')->name('Prov');
