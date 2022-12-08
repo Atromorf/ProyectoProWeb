@@ -2,7 +2,8 @@
 
 @section('contenido')
 
-@include('ModalEliminarV')
+@include('ModalEliminarR')
+
 
 @if (session()->has('actual'))
     
@@ -44,7 +45,7 @@
 
 @endif
 
-@if (session()->has('confina'))
+@if (session()->has('elimi'))
     
     {!! "<script> Swal.fire(
         'Eliminado correctamente!',
@@ -65,10 +66,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-<h1>Articulos en carrito</h1>
+<h1>Articulos vendidos</h1>
 <section class="busc">
   <form class="d-flex">
-    <input name="buscason" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <input name="buscarcuan" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </section>
@@ -76,15 +77,16 @@
 <table class="tablas">   
   <tbody>
       <tr>
-        <th colspan="4" scope="rowgroup"><strong>Productos agregados</strong></th>
+        <th colspan="5" scope="rowgroup"><strong>Productos vendidos</strong></th>
       </tr>
   <tr>
-  @foreach($ventas as $vista)
-  <td> <a>{{$vista->nombre}}</a></td>
-  <td> <a>{{$vista->tipo}}</a></td>
-  <td> <a>{{$vista->precio}}</a></td>
+  @foreach($reportVent as $report)
+  <td> <a>{{$report->producto}}</a></td>
+  <td> <a>{{$report->precioVenta}}</a></td>
+  <td> <a>{{$report->proveedor}}</a></td>
+  <td> <a>{{$report->fecha}}</a></td>
   <td> 
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarV{{$vista->idVentas}}">
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarR{{$report->idCarrito}}">
       Eliminar
     </button>
   </td>
@@ -94,7 +96,7 @@
 </table>
 
 <section class="agregand">
-  <form action="{{route('ticket.PDF')}}">
+  <form action="{{route('reporte.PDF')}}">
     <button type="submit" class="btn btn-warning">Generar PDF <i class="bi bi-filetype-pdf"></i></a></button>
     </form>
  </section>

@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weirdo Comics</title>
-    <link rel="stylesheet" href="">
-<head>
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Weirdo Comics</title>
+  </head>
+  
 <body>
-    <table class="tablas">   
-        <tbody>
-            <tr>
-              <th colspan="4" scope="rowgroup"><strong>Productos agregados</strong></th>
-            </tr>
-        <tr>
-        @foreach($ventas as $vista)
-        <td> <a>{{$vista->nombre}}</a></td>
-        <td> <a>{{$vista->tipo}}</a></td>
-        <td> <a>{{$vista->precio}}</a></td>
-        </tr>   
-        @endforeach
-        </tbody>
-      </table>
+  <h1 style="text-align: center;"><strong>Weido comics</strong></h1>
+  <hr />
+  <p style="text-align: center;">Ticket de venta</p>
+  <p style="text-align: center;">Gracias por su preferencia vuelva pronto</p>
+  <p style="text-align: center;">Articulos comprados</p>
+  <p style="text-align: center;">&nbsp;</p>
+  <div>
+  @foreach($ventas as $vista)
+  </div>
+  <p style="text-align: center;"><strong>Nombre del producto:</strong></p>
+  <div><p style="text-align: center;">{{$vista->nombre}}</p></div>
+  <p style="text-align: center;"><strong>Edicion o Marca:</strong></p>
+  <div><p style="text-align: center;">{{$vista->tipo}}</p></div>
+  <p style="text-align: center;"><strong>Precio</strong></p>
+  <div><p style="text-align: center;">{{$vista->precio}}</p></div>
+  @endforeach
+  </div>
+  </div>
 </body>

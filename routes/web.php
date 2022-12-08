@@ -74,9 +74,13 @@ Route::delete('proveedores/{id}/delete', [ControladorProveedores::class, 'destro
 //email
 Route::get('pedidos', [ControladorPedidos::class, 'index'])->name('pedidos.index');
 Route::post('pedidos/envio', [ControladorPedidos::class, 'store'])->name('pedidos.store');
+Route::get('pedidos/pdf', [ControladorPedidos::class, 'PDF'])->name('pedidos.PDF');
 //ticket
 Route::get('ticket/pdf', [ControladorComics::class, 'PDF'])->name('ticket.PDF');
-
+//reporte ventas
+Route::get('reporte/ventas', [ControladorComics::class, 'report'])->name('reporte.report');
+Route::get('reporte/pdf', [ControladorComics::class, 'PDFR'])->name('reporte.PDF');
+Route::delete('reporte/{id}/delete', [ControladorComics::class, 'destruir'])->name('reporte.destruir');
 
 Route::controller(ControladorVista::class)->group(
     function () {
@@ -86,7 +90,7 @@ Route::controller(ControladorVista::class)->group(
         Route::get('tienda', 'showTienda')->name('tiend');
         Route::get('nosotros', 'showNosotros')->name('Nosotros');
         Route::get('AdminU', 'showAdminU')->name('adU');
-        Route::get('RegistroU', 'showRegistroU')->name('regU');
+        //Route::get('RegistroU', 'showRegistroU')->name('regU');
         //Route::get('articulos', 'showArticulos')->name('Arti');
         //Route::get('ventas', 'showVentas')->name('Vent');
         Route::get('proveedores', 'showProveedores')->name('Prov');

@@ -16,10 +16,10 @@ class ControladorProveedores extends Controller
      */
     public function index(Request $request)
     {
-        $buscardon=$request->get('buscardon');
-        $resultProv=DB::table('tb_proveedores')->where('empresa','like','%'.$buscardon.'%')->get();
+        $buscarpro=$request->get('buscarpro');
+        $resultProv=DB::table('tb_proveedores')->where('empresa','like','%'.$buscarpro.'%')->get();
 
-        return view('proveedores', compact('resultProv'), compact('buscardon'));
+        return view('proveedores', compact('resultProv'), compact('buscarpro'));
     }
 
     /**

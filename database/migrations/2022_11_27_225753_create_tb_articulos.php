@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('cantidad');
             $table->string('precioCompra');
             $table->string('precioVenta');
+            $table->string('proveedor');
             $table->date('fecha');
             $table->timestamps();
         });

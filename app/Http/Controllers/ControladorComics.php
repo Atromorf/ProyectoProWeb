@@ -19,13 +19,14 @@ class ControladorComics extends Controller
     public function index(Request $request)
     {
         $buscarpor=$request->get('buscarpor');
+        $proveedores=DB::table('tb_proveedores')->get();
         $resultCom=DB::table('tb_comics')->where('nombre','like','%'.$buscarpor.'%')->get();
         $resultArt=DB::table('tb_articulos')->where('tipo','like',"%$buscarpor%")->get();
         if(is_null($resultCom) && is_null($resultArt))
         {
-            return redirect('articulos/comics',compact('resultCom'), compact('resultArt'), compact('buscarpor'))->with('busca','No se ha encontrado el articulo');
+            return redirect('articulos/comics',compact('resultCom'), compact('resultArt'), compact('buscarpor'), compact('proveedores'))->with('busca','No se ha encontrado el articulo');
         } else {
-            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'));
+            return view('articulos',compact('resultCom'), compact('resultArt'), compact('buscarpor'), compact('proveedores'));
         }
     }
 
@@ -39,6 +40,14 @@ class ControladorComics extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('tb_carrito')->insert([
+            'producto' => $resultCom[0]->nombre,
+            'precioVenta' => $resultCom[0]->precioVenta,
+            'proveedor' => $resultCom[0]->proveedor,
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
         return redirect('articulos/comics')->with('cart', 'Comic guardado');
     }
 
@@ -49,6 +58,14 @@ class ControladorComics extends Controller
             'nombre' => $resultArt[0]->tipo,
             'tipo' => $resultArt[0]->marca,
             'precio' => $resultArt[0]->precioVenta,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('tb_carrito')->insert([
+            'producto' => $resultArt[0]->tipo,
+            'precioVenta' => $resultArt[0]->precioVenta,
+            'proveedor' => $resultArt[0]->proveedor,
+            'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -69,8 +86,16 @@ class ControladorComics extends Controller
 
     public function indiqui(Request $request)
     {
-        $ventas=DB::table('tb_ventas')->get();
-        return view('ventas',compact('ventas'));
+        $buscason=$request->get('buscason');
+        $ventas=DB::table('tb_ventas')->where('nombre','like','%'.$buscason.'%')->get();
+        return view('ventas',compact('ventas'), compact('buscason'));
+    }
+
+    public function report(Request $request)
+    {
+        $buscarcuan=$request->get('buscarcuan');
+        $reportVent=DB::table('tb_carrito')->where('fecha','like','%'.$buscarcuan.'%')->get();
+        return view('reporte',compact('reportVent'), compact('buscarcuan'));
     }
 
     public function indis(Request $request)
@@ -95,7 +120,8 @@ class ControladorComics extends Controller
      */
     public function create()
     {
-        return view('RegistroC');
+        $proveedores=DB::table('tb_proveedores')->get();
+        return view('RegistroC', compact('proveedores'));
     }
 
     public function created()
@@ -116,6 +142,19 @@ class ControladorComics extends Controller
 
     }
 
+    public function reporteV()
+    {
+        return view('reportPDF');
+    }
+
+    public function PDFR()
+    {
+        $reporteVent=DB::table('tb_carrito')->get();
+        $pdf =PDF::loadView('reportPDF', compact("reporteVent"));
+        return $pdf->stream('Reporte.pdf');
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -133,6 +172,7 @@ class ControladorComics extends Controller
             'cantidad' => $request->input('txtCantidad'),
             'precioCompra' => $request->input('txtPrecioC'),
             'precioVenta' => $suma,
+            'proveedor' => $request->input('txtProveedor'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -217,5 +257,11 @@ class ControladorComics extends Controller
     {
         DB::table('tb_ventas')->where('idVentas', $id)->delete();
         return redirect('ventas/comics')->with('confina', 'Producto eliminado');
+    }
+
+    public function destruir($id)
+    {
+        DB::table('tb_carrito')->where('idCarrito', $id)->delete();
+        return redirect('reporte/ventas')->with('elimi', 'Producto eliminado');
     }
 }

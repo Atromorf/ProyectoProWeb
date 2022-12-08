@@ -66,11 +66,18 @@
                 <div class="errores">
                     <p class="text-danger  fst-italic"> {{ $errors->first('txtPrecioCA') }} </p>
                 </div>
-                <div class="links">
-                    <a href="/AdminU">Regresar</a>
+                <div class="content-select">
+                    <select name="txtProvee" id="txtProvee" required>
+                        <option value="0">Seleccione un Proveedor</option>
+                        @foreach ($proveedores as $proveedor)
+                            <option>{{ $proveedor->empresa }}</option>
+                        @endforeach
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Agregar">
+                </div>
+                <div class="links">
+                    <a href="/AdminU">Regresar</a>
                 </div>
             </form>
         </div>

@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tb_carrito', function (Blueprint $table) {
-            $table->id();
+            $table->increments('idCarrito');
+            $table->string('producto');
+            $table->string('precioVenta');
+            $table->string('proveedor');
+            $table->date('fecha');
             $table->timestamps();
         });
     }

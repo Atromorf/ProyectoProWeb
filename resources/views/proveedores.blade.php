@@ -51,7 +51,7 @@
 <h1>Proveedores Disponibles</h1>
 <section class="busc">
   <form class="d-flex">
-    <input name="buscardon" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <input name="buscarpro" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </section>
