@@ -35,7 +35,8 @@ class ControladorArticulos extends Controller
 
     public function creates()
     {
-        return view('RegistroAV');
+        $proveedores=DB::table('tb_proveedores')->get();
+        return view('RegistroAV', compact('proveedores'));
     }
 
     /**
@@ -73,6 +74,7 @@ class ControladorArticulos extends Controller
             'cantidad' => $request->input('txtCantidadA'),
             'precioCompra' => $request->input('txtPrecioCA'),
             'precioVenta' => $suma,
+            'proveedor' => $request->input('txtProvee'),
             'fecha' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

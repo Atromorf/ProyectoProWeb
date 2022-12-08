@@ -20,11 +20,61 @@
 
 @endif
 
+@if (session()->has('actualis'))
+    
+    {!! "<script> Swal.fire(
+        'Guardado correctamente!',
+        'Tu Articulo se actualizo satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
 @if (session()->has('confirma'))
     
     {!! "<script> Swal.fire(
         'Eliminado correctamente!',
         'Tu Comic se elimino satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('confima'))
+    
+    {!! "<script> Swal.fire(
+        'Eliminado correctamente!',
+        'Tu Articulo se elimino satisfactoriamente!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('busca'))
+    
+    {!! "<script> Swal.fire(
+        'No encontrado!',
+        'El articulo o comic que buscas no existe!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('cart'))
+    
+    {!! "<script> Swal.fire(
+        'Agregado al carrito!',
+        'Tu comic esta en el carrito!',
+        'success'
+        ) </script>" !!}
+
+@endif
+
+@if (session()->has('cartun'))
+    
+    {!! "<script> Swal.fire(
+        'Agregado al carrito!',
+        'Tu articulo esta en el carrito!',
         'success'
         ) </script>" !!}
 
@@ -43,6 +93,7 @@
 <body>
 <h1>Productos Disponibles</h1>
 <section class="busc">
+
   <form class="d-flex">
     <input name="buscarpor" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -84,6 +135,9 @@
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarC{{$vista->idComic}}">
       Eliminar
     </button>
+    <form action="{{route('ventasV.carri', $vista->idComic)}}">
+    <button type="submit" class="btn btn-warning"><i class="bi bi-cart"></i></a></button>
+    </form>
   </td>
   </tr>   
   @endforeach
@@ -126,6 +180,9 @@
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarA{{$vistaso->idArticulo}}">
         Eliminar
       </button>
+      <form action="{{route('ventasV.carrito', $vistaso->idArticulo)}}">
+        <button type="submit" class="btn btn-warning"><i class="bi bi-cart"></i></a></button>
+        </form>
     </td>
     </tr>   
     @endforeach

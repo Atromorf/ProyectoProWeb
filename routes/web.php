@@ -81,6 +81,11 @@ Route::get('ticket/pdf', [ControladorComics::class, 'PDF'])->name('ticket.PDF');
 Route::get('reporte/ventas', [ControladorComics::class, 'report'])->name('reporte.report');
 Route::get('reporte/pdf', [ControladorComics::class, 'PDFR'])->name('reporte.PDF');
 Route::delete('reporte/{id}/delete', [ControladorComics::class, 'destruir'])->name('reporte.destruir');
+Route::get('carrito/{id}/ventasV', [ControladorComics::class, 'carri'])->name('ventasV.carri');
+Route::get('carrito/{id}/ventasAV', [ControladorComics::class, 'carrito'])->name('ventasV.carrito');
+
+
+
 
 Route::controller(ControladorVista::class)->group(
     function () {
