@@ -281,11 +281,12 @@ Copiar esto
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">
+                    <img src="https://www.modelocurriculum.net/wp-content/foto-curriculum-vitae-hombre.jpg" alt="img-avatar" height="170" width="5">
                     <button type="button" class="boton-avatar">
                         <i class="far fa-image"></i>
                     </button>
                 </div>
+                <img src="https://png.pngtree.com/thumb_back/fw800/background/20201010/pngtree-black-friday-sale-background-with-shopping-bag-and-shopping-cart-illustration-image_407932.jpg" alt="img-portada" height="273" width="1300">
                 <button type="button" class="boton-portada">
                     <i class="far fa-image"></i> Cambiar fondo
                 </button>

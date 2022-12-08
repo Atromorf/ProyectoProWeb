@@ -87,7 +87,7 @@
   <td> <a>{{$report->fecha}}</a></td>
   <td> 
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarR{{$report->idCarrito}}">
-      Eliminar
+      Eliminar <i class="bi bi-trash3-fill"></i>
     </button>
   </td>
   </tr>   

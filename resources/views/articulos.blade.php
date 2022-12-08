@@ -133,10 +133,12 @@
       Editar <i class="bi bi-pen"></i>
     </button>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarC{{$vista->idComic}}">
-      Eliminar
+      Eliminar <i class="bi bi-trash3-fill"></i>
     </button>
     <form action="{{route('ventas.cart', $vista->idComic)}}">
-    <button type="submit" class="btn btn-warning"><i class="bi bi-cart"></i></a></button>
+    <button type="submit" class="btn btn-warning">
+      Agregar<i class="bi bi-cart"></i>
+    </a></button>
     </form>
   </td>
   </tr>   

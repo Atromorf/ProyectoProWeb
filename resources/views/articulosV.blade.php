@@ -136,7 +136,9 @@
       Eliminar
     </button>
     <form action="{{route('ventasV.carri', $vista->idComic)}}">
-    <button type="submit" class="btn btn-warning"><i class="bi bi-cart"></i></a></button>
+    <button type="submit" class="btn btn-warning">
+      Agregar<i class="bi bi-cart"></i>
+    </a></button>
     </form>
   </td>
   </tr>   

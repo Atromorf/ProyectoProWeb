@@ -85,7 +85,7 @@
   <td> <a>{{$vista->precio}}</a></td>
   <td> 
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminarV{{$vista->idVentas}}">
-      Eliminar
+      Eliminar <i class="bi bi-trash3-fill"></i>
     </button>
   </td>
   </tr>   
